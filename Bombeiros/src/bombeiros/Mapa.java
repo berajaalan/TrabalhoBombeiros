@@ -7,8 +7,8 @@ import java.io.IOException;
 
 public class Mapa {
     
-    String path = System.getProperty("user.dir") + "\\mapa.txt";
-    Digraph mapa;
+    private String path = System.getProperty("user.dir") + "\\mapa.txt";
+    private Digraph mapa;
     
     public Mapa () throws FileNotFoundException, IOException{
         
@@ -39,17 +39,28 @@ public class Mapa {
             }
             
             // Ciclo
-            
+            if (mapa.buscaArco(y, x)) {
+                System.out.println("Linha " + ln +", Par " + x + "," + y + ": forma ciclo");
+                ciclo = true;
+            }
             
             // Ja inserido
-            
+            if (mapa.buscaArco(x, y)) {
+                System.out.println("Linha " + ln +", Par " + x + "," + y + ": arco já inserido");
+                ins = true;
+            }
             
             // Adicionar Arcos
-            
+            if (x != y && !ciclo && !ins) {
+                mapa.insereArco(x, y);
+            }
             
             // Define linha atual do arquivo
             ln ++;
         }
+    }
+    
+    public void findPaths(){
         
     }
     

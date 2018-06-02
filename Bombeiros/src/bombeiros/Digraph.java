@@ -55,7 +55,6 @@ public class Digraph {
         No aux = this.adj[v];
         No ant = null;
         while (aux != null) {
-
             if (aux.getElem() == w) {
                 this.A--;
                 ant.setProx(aux.getProx());
@@ -73,16 +72,13 @@ public class Digraph {
      */
     public boolean buscaArco(int v, int w) {
         No aux = this.adj[v];
-        No ant = null;
-        while (aux.getElem() != w) {
-
-            if (aux == null) {
-                return false;
+        while (aux != null) {
+            if (aux.getElem() == w) {
+                return true;
             }
-            ant = aux;
             aux = aux.getProx();
         }
-        return true;
+        return false;
     }
 
     /*
