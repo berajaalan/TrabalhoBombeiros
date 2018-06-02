@@ -1,9 +1,9 @@
 package bombeiros;
 
-public class Main {
+class Main {
 
-    public static void main(String[] args) {
-        //oiiiiiiiiiiiiiiiiii
+    static void main(String[] args) {
+        
         
         
     }
