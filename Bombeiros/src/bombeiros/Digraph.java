@@ -21,7 +21,7 @@ public class Digraph {
            Se o digrafo já tem arco v-w, o método não faz nada.
            Insere aresta na lista de adjacencias no final
      */
-    public void insereA(int v, int w) {
+    public void insereArco(int v, int w) {
         No aux = this.adj[v];
         No ant = null;
         while (aux != null) {
@@ -51,8 +51,38 @@ public class Digraph {
            menores que V. Se não existe um arco v-w, método não 
            faz nada.
      */
-    public void removeA(int v, int w) {
+    public void removeArco(int v, int w) {
+        No aux = this.adj[v];
+        No ant = null;
+        while (aux != null) {
 
+            if (aux.getElem() == w) {
+                this.A--;
+                ant.setProx(aux.getProx());
+                break;
+            }
+            ant = aux;
+            aux = aux.getProx();
+        }
+    }
+
+    /*
+           Metodo busca no digrafo um arco aresta v-w.
+           O método supõe que v e w são distintos, positivos e 
+           menores que V. Se não existe um arco v-w, método retorna false.
+     */
+    public boolean buscaArco(int v, int w) {
+        No aux = this.adj[v];
+        No ant = null;
+        while (aux.getElem() != w) {
+
+            if (aux == null) {
+                return false;
+            }
+            ant = aux;
+            aux = aux.getProx();
+        }
+        return true;
     }
 
     /*
@@ -78,8 +108,17 @@ public class Digraph {
         Grau de Entrada: número de arcos com ponta final em v
      */
     public int indeg(int v) {
-
-        return 0;
+        int a = 0;
+        for (int i = 0; i < this.adj.length; i++) {
+            No aux = this.adj[i];
+            while (aux != null) {
+                if (aux.getElem() == v) {
+                    a++;
+                }
+                aux = aux.getProx();
+            }
+        }
+        return a;
     }
 
     /*
@@ -88,7 +127,12 @@ public class Digraph {
         Grau de saida: número de arcos com ponta inicial em v
      */
     public int outdeg(int v) {
-
-        return 0;
+        No aux = this.adj[v];
+        int a = 0;
+        while (aux != null) {
+            aux = aux.getProx();
+            a++;
+        }
+        return a;
     }
 }

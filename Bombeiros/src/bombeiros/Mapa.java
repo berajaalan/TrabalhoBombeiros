@@ -5,12 +5,12 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
-class Mapa {
+public class Mapa {
     
     String path = System.getProperty("user.dir") + "\\mapa.txt";
     Digraph mapa;
     
-    Mapa () throws FileNotFoundException, IOException{
+    public Mapa () throws FileNotFoundException, IOException{
         
         FileReader fr = new FileReader(path);
         BufferedReader br = new BufferedReader(fr);
@@ -31,47 +31,21 @@ class Mapa {
                 break;
             }
             
-            // Mensagens de erro igualdade
+            // Mensagens de erro
+            
+            // Igual
             if (x == y) {
                 System.out.println("Linha " + ln +", Par " + x + "," + y + ": x deve ser diferente do y.");
             }
             
-            for (int i = 0; i < mapa.length; i++) {
-                
-                // Mensagem de erro forma ciclo
-                if (i == y-1) {
-                    while(mapa[i].getProx() != null){
-                        if (mapa[i].getElem() == x) {
-                            System.out.println("Linha " + ln +", Par " + x + "," + y + ": forma ciclo.");
-                            ciclo = true;
-                        }
-                    }
-                }
-                
-                // Mensagem de erro já inserido
-                if (i == x-1) {
-                    while(mapa[i].getProx() != null){
-                        if (mapa[i].getElem() == y) {
-                            System.out.println("Linha " + ln +", Par " + x + "," + y + ": já inserido.");
-                            ins = true;
-                        }
-                    }
-                } 
-            }
+            // Ciclo
             
-            // Definir conexoes
-            if (x != y && !ciclo && !ins) {
-                if (ln == 1) {
-                    mapa[x-1] = new No(y,null);
-                }else{
-                    while (true){
-                        No 
-                        if () {
-                            
-                        }
-                    }
-                }
-            }
+            
+            // Ja inserido
+            
+            
+            // Adicionar Arcos
+            
             
             // Define linha atual do arquivo
             ln ++;
