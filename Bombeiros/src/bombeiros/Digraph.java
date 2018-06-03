@@ -24,10 +24,12 @@ public class Digraph {
     public void insereArco(int v, int w) {
         No aux = this.adj[v];
         No ant = null;
+        No ant = null; //variavel anterior
         while (aux != null) {
             //Se o digrafo já tem arco v-w, o método não faz nada
             if (aux.getElem() == w) {
                 return; // ejeta
+                return; // ejeta, para a função
             }
             ant = aux;
             aux = aux.getProx();
@@ -72,10 +74,18 @@ public class Digraph {
      */
     public boolean buscaArco(int v, int w) {
         No aux = this.adj[v];
+<<<<<<< HEAD
         while (aux != null) {
             if (aux.getElem() == w)
                 return true;
             aux = aux.getProx();
+=======
+        while (aux != null) {// se o elemento for igual a w o arco já existe
+            if (aux.getElem() == w) { 
+                return true;
+            }
+            aux = aux.getProx(); // para pegar o proximo no
+>>>>>>> 7d2421b52d91fcbfb60ef7370649c8b2bb8a80ec
         }
         return false;
     }
