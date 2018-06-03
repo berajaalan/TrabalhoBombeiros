@@ -15,20 +15,20 @@ public class Mapa {
         FileReader fr = new FileReader(path);
         BufferedReader br = new BufferedReader(fr);
         
-        mapa = new Digraph(Integer.parseInt(br.readLine()));
-        int ln = 1;
+        mapa = new Digraph(Integer.parseInt(br.readLine())); //convertendo a primeira linha para Inteiro
+        int ln = 1; //indice - utilizado para indicar linha
         
         while(true){
             
             // Definir variaveis
-            String l[] = br.readLine().split(" ");
-            int x = Integer.parseInt(l[0]),
+            String l[] = br.readLine().split(" "); //vetor do tipo String iguinorando a separação
+            int x = Integer.parseInt(l[0]),//Converter a posição x e y para inteiro
                 y = Integer.parseInt(l[1]);
-            boolean ciclo = false, ins = false;
+            boolean ciclo = false, ins = false; //ins- Inserido
             
             System.out.println("X:" + x + " Y:" + y);
             
-            // Condição de parada
+            // Condição de parada para o final do arquivo 0 0
             if (x == 0 && y == 0) {
                 System.out.println("--------------------------------------------");
                 System.out.println("Leitura do mapa completa");
@@ -39,7 +39,7 @@ public class Mapa {
             
             // Igual
             if (x == y) {
-                System.out.println("Linha " + ln +", Par " + x + "," + y + ": x deve ser diferente do y.");
+                System.out.println("Linha " + ln +", Par " + x + "," + y + ": x deve ser diferente de y.");
             }
             
             // Ciclo
