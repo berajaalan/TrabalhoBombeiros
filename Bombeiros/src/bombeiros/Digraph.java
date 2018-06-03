@@ -80,6 +80,21 @@ public class Digraph {
         }
         return false;
     }
+    
+    /*
+           Metodo busca no digrafo um ciclo caso o 
+           arco aresta v-w seja adicionado.
+           O método supõe que v e w são distintos, positivos e 
+           menores que V. Se não existe um ciclo com a adicao
+           do arco aresta v-w, método retorna false.
+     */
+    public boolean buscaCiclo(int v, int w){
+        No aux = this.adj[w];
+        while(aux.getElem() != v){
+            
+        }
+        return true;
+    }
 
     /*
            Para cada vértice v do grafo, este método imprime, em 
@@ -88,10 +103,10 @@ public class Digraph {
     public void mostra() {
 
         for (int i = 0; i < this.V; i++) {
-            System.out.print(i + ": ");
+            System.out.print((i+1) + ": ");
             No aux = this.adj[i];
             while (aux != null) {
-                System.out.print(aux.getElem() + ", ");
+                System.out.print(aux.getElem()+1 + ", ");
                 aux = aux.getProx();
             }
             System.out.println();

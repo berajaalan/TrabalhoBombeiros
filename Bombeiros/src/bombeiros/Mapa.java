@@ -26,8 +26,12 @@ public class Mapa {
                 y = Integer.parseInt(l[1]);
             boolean ciclo = false, ins = false;
             
+            //System.out.println("X:" + x + " Y:" + y);
+            
             // Condição de parada
             if (x == 0 && y == 0) {
+                System.out.println("--------------------------------------------");
+                System.out.println("Leitura do mapa completa");
                 break;
             }
             
@@ -39,25 +43,28 @@ public class Mapa {
             }
             
             // Ciclo
-            if (mapa.buscaArco(y, x)) {
+            else if (mapa.buscaCiclo(y-1, x-1)) {
                 System.out.println("Linha " + ln +", Par " + x + "," + y + ": forma ciclo");
                 ciclo = true;
             }
             
             // Ja inserido
-            if (mapa.buscaArco(x, y)) {
+            else if (mapa.buscaArco(x-1, y-1)) {
                 System.out.println("Linha " + ln +", Par " + x + "," + y + ": arco já inserido");
                 ins = true;
             }
             
             // Adicionar Arcos
             if (x != y && !ciclo && !ins) {
-                mapa.insereArco(x, y);
+                mapa.insereArco(x-1, y-1);
             }
             
             // Define linha atual do arquivo
             ln ++;
         }
+        
+        mapa.mostra();
+        
     }
     
     public void findPaths(){
