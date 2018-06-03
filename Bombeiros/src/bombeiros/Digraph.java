@@ -89,11 +89,29 @@ public class Digraph {
            do arco aresta v-w, método retorna false.
      */
     public boolean buscaCiclo(int v, int w){
-        No aux = this.adj[w];
-        while(aux.getElem() != v){
-            
+        Pilha prox = new Pilha(this.adj.length);
+        Pilha vis = new Pilha(this.adj.length);
+        prox.push(w);
+        prox.push(w);
+        while(!prox.isEmpty()){
+            No aux = this.adj[prox.pop()];
+            if (aux != null) {
+                if (aux.getElem() == v) {
+                    return true;
+                }
+            }
+            No e = aux;
+            while(e != null){
+                if (vis.find(e.getElem())) {
+                    prox.push(e.getElem());
+                    e = e.getProx();
+                }
+            }
+            if (aux != null) {
+                vis.push(aux.getElem());
+            }
         }
-        return true;
+        return false;
     }
 
     /*

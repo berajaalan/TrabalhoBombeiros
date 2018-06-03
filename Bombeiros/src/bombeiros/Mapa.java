@@ -26,7 +26,7 @@ public class Mapa {
                 y = Integer.parseInt(l[1]);
             boolean ciclo = false, ins = false;
             
-            //System.out.println("X:" + x + " Y:" + y);
+            System.out.println("X:" + x + " Y:" + y);
             
             // Condição de parada
             if (x == 0 && y == 0) {
@@ -60,6 +60,7 @@ public class Mapa {
             }
             
             // Define linha atual do arquivo
+            System.out.println(ln);
             ln ++;
         }
         
