@@ -16,7 +16,7 @@ public class Mapa {
         BufferedReader br = new BufferedReader(fr);
         
         mapa = new Digraph(Integer.parseInt(br.readLine()));
-        int ln = 1;
+        int ln = 2;
         
         while(true){
             
@@ -39,14 +39,14 @@ public class Mapa {
             
             // Igual
             if (x == y) {
-                System.out.println("Linha " + ln +", Par " + x + "," + y + ": x deve ser diferente do y.");
+                System.out.println("Linha " + ln +", Par " + x + "," + y + ": x deve ser diferente de y.");
             }
             
             // Ciclo
-            else if (mapa.buscaCiclo(y-1, x-1)) {
-                System.out.println("Linha " + ln +", Par " + x + "," + y + ": forma ciclo");
-                ciclo = true;
-            }
+//            else if (mapa.buscaCiclo(y-1, x-1)) {
+//                System.out.println("Linha " + ln +", Par " + x + "," + y + ": forma ciclo");
+//                ciclo = true;
+//            }
             
             // Ja inserido
             else if (mapa.buscaArco(x-1, y-1)) {
