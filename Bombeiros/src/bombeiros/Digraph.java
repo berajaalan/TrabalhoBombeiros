@@ -23,12 +23,10 @@ public class Digraph {
      */
     public void insereArco(int v, int w) {
         No aux = this.adj[v];
-        No ant = null;
         No ant = null; //variavel anterior
         while (aux != null) {
             //Se o digrafo já tem arco v-w, o método não faz nada
             if (aux.getElem() == w) {
-                return; // ejeta
                 return; // ejeta, para a função
             }
             ant = aux;
@@ -74,18 +72,12 @@ public class Digraph {
      */
     public boolean buscaArco(int v, int w) {
         No aux = this.adj[v];
-<<<<<<< HEAD
-        while (aux != null) {
-            if (aux.getElem() == w)
-                return true;
-            aux = aux.getProx();
-=======
         while (aux != null) {// se o elemento for igual a w o arco já existe
             if (aux.getElem() == w) { 
                 return true;
             }
             aux = aux.getProx(); // para pegar o proximo no
->>>>>>> 7d2421b52d91fcbfb60ef7370649c8b2bb8a80ec
+
         }
         return false;
     }
@@ -99,11 +91,17 @@ public class Digraph {
      */
     public boolean buscaCiclo(int v, int w){
         No aux = this.adj[w];
-        boolean vis[] = new boolean[this.adj.length];
-        while(!prox.isEmpty()){
-            
+        boolean c = false;
+        while(aux != null){
+            if (c == true || aux.getElem() == v) {
+                c = true;
+                break;
+            }else{
+                c = this.buscaCiclo(v, aux.getElem());
+            }
+            aux = aux.getProx();
         }
-        return false;
+        return c;
     }
 
     /*
@@ -124,7 +122,7 @@ public class Digraph {
     }
 
     /*
-        método indeg que calcula o grau de entrada um 
+        Método indeg que calcula o grau de entrada um 
         vértice v de um digrafo.
         Grau de Entrada: número de arcos com ponta final em v
      */
@@ -143,7 +141,7 @@ public class Digraph {
     }
 
     /*
-        método outdeg que calcula o grau de saida de um 
+        Método outdeg que calcula o grau de saida de um 
         vértice v em um digrafo.
         Grau de saida: número de arcos com ponta inicial em v
      */

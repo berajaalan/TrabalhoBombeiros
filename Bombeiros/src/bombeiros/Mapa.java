@@ -15,20 +15,15 @@ public class Mapa {
         FileReader fr = new FileReader(path);
         BufferedReader br = new BufferedReader(fr);
         
-        mapa = new Digraph(Integer.parseInt(br.readLine()));
-        int ln = 2;
+        int ln = 2;//indice - utilizado para indicar linha
         mapa = new Digraph(Integer.parseInt(br.readLine())); //convertendo a primeira linha para Inteiro
-        int ln = 1; //indice - utilizado para indicar linha
         
         while(true){
             
             // Definir variaveis
-            String l[] = br.readLine().split(" ");
-            int x = Integer.parseInt(l[0]),
             String l[] = br.readLine().split(" "); //vetor do tipo String iguinorando a separação
-            int x = Integer.parseInt(l[0]),//Converter a posição x e y para inteiro
+            int x = Integer.parseInt(l[0]), //Converter a posição x e y para inteiro
                 y = Integer.parseInt(l[1]);
-            boolean ciclo = false, ins = false;
             boolean ciclo = false, ins = false; //ins- Inserido
             
             System.out.println("X:" + x + " Y:" + y);
@@ -48,16 +43,16 @@ public class Mapa {
                 System.out.println("Linha " + ln +", Par " + x + "," + y + ": x deve ser diferente de y.");
             }
             
-            // Ciclo
-//            else if (mapa.buscaCiclo(y-1, x-1)) {
-//                System.out.println("Linha " + ln +", Par " + x + "," + y + ": forma ciclo");
-//                ciclo = true;
-//            }
-            
             // Ja inserido
             else if (mapa.buscaArco(x-1, y-1)) {
                 System.out.println("Linha " + ln +", Par " + x + "," + y + ": arco já inserido");
                 ins = true;
+            }
+            
+            // Ciclo
+            else if (mapa.buscaCiclo(x-1, y-1)) {
+                System.out.println("Linha " + ln +", Par " + x + "," + y + ": forma ciclo");
+                ciclo = true;
             }
             
             // Adicionar Arcos
@@ -71,10 +66,6 @@ public class Mapa {
         }
         
         mapa.mostra();
-        
-    }
-    
-    public void findPaths(){
         
     }
     
