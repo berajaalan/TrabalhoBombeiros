@@ -7,12 +7,12 @@ import java.io.IOException;
 
 public class Mapa {
     
-    private String path = System.getProperty("user.dir") + "\\mapa.txt";
+    private String path = System.getProperty("user.dir") + "\\";
     private Digraph mapa;
     
-    public Mapa () throws FileNotFoundException, IOException{
+    public Mapa (String arq) throws FileNotFoundException, IOException{
         
-        FileReader fr = new FileReader(path);
+        FileReader fr = new FileReader(path+arq);
         BufferedReader br = new BufferedReader(fr);
         
         int ln = 2;//indice - utilizado para indicar linha
@@ -25,8 +25,6 @@ public class Mapa {
             int x = Integer.parseInt(l[0]), //Converter a posição x e y para inteiro
                 y = Integer.parseInt(l[1]);
             boolean ciclo = false, ins = false; //ins- Inserido
-            
-            System.out.println("X:" + x + " Y:" + y);
             
             // Condição de parada
             // Condição de parada para o final do arquivo 0 0
@@ -61,11 +59,15 @@ public class Mapa {
             }
             
             // Define linha atual do arquivo
-            System.out.println(ln);
             ln ++;
         }
         
         mapa.mostra();
+        
+        System.out.println("--------------------------------------------");
+        System.out.println("Rotas:");
+        
+        mapa.imprimeCaminhos();
         
     }
     

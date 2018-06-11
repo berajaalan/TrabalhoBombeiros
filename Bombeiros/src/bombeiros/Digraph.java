@@ -4,15 +4,20 @@ public class Digraph {
 
     private int V; // número de vértices
     private int A; // número de arcos
+    private int dest; // destino dos bombeiros
+    private int rotas = 0;
     private No adj[]; // listas de adjcências
 
-    // construtor da clsse
-    // inicializa os atributos da classe e cria a 
-    // o vetor de listas deadjacências para V vértices
+    /* 
+           Construtor da clsse
+           inicializa os atributos da classe e cria a 
+           o vetor de listas deadjacências para V vértices
+    */
     public Digraph(int V) {
-        this.V = V;
+        this.V = 20;
         this.A = 0;
-        this.adj = new No[V];
+        this.dest = V-1;
+        this.adj = new No[20];
     }
 
     /* 
@@ -102,6 +107,24 @@ public class Digraph {
             aux = aux.getProx();
         }
         return c;
+    }
+    
+    public void imprimeCaminhos(){
+        this.buscaProf(0, "1 ");
+        System.out.println("Existem " + rotas + " rotas até o incendio");
+    }
+    
+    private void buscaProf(int i, String v){
+        No aux = this.adj[i];
+        while(aux != null){
+            if (aux.getElem() == this.dest) {
+                System.out.println(v+(aux.getElem()+1));
+                this.rotas++;
+                return;
+            }
+            this.buscaProf(aux.getElem(), v+(aux.getElem()+1)+" ");
+            aux = aux.getProx();
+        }
     }
 
     /*
